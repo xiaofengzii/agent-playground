@@ -5,10 +5,6 @@ export type ButtonProps = {
   label: string;
   /** Whether the button is disabled (default: false) */
   disabled?: boolean;
-  /** Additional CSS class name */
-  className?: string;
-  /** Button click handler */
-  onClick?: () => void;
 };
 
 export type ButtonReturn = JSX.Element;
@@ -19,9 +15,9 @@ export type ButtonReturn = JSX.Element;
  * @param props - Button properties including label and disabled state
  * @returns A JSX button element
  */
-export function Button({ label, disabled = false, className, onClick }: ButtonProps): JSX.Element {
+export function Button({ label, disabled = false }: ButtonProps): ButtonReturn {
   return (
-    <button type="button" disabled={disabled} className={className} onClick={onClick}>
+    <button type="button" disabled={disabled}>
       {label}
     </button>
   );

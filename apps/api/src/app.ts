@@ -6,6 +6,9 @@ import piRouter from "./routes/pi";
 export function createApp() {
   const app = express();
 
+  // Disable Express X-Powered-By header
+  app.disable("x-powered-by");
+
   // Disable ETag generation for dynamic JSON responses
   app.set("etag", false);
 
