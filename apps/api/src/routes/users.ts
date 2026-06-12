@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { errorResponse } from "../utils/errors";
 
 const router = Router();
 
@@ -28,10 +29,29 @@ router.get("/", (_req, res) => {
  * @returns 201 status with created user data including stub ID
  */
 router.post("/", (req, res) => {
+  const { email, name } = req.body || {};
+  
+  // Validate required fields
+  if (!email) {
+    return errorResponse(res, 400, "Email is required", "Missing required field: email");
+  }
+  
+  // Basic email format validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return errorResponse(res, 422, "Invalid email format", "Email must be a valid email address");
+  }
+  
+  // Name validation (if provided, must be a non-empty string)
+  if (name !== undefined && typeof name !== "string") {
+    return errorResponse(res, 422, "Invalid name format", "Name must be a string");
+  }
+  
   res.status(201).json({
     data: {
       id: "stub-user-id",
-      ...req.body
+      email,
+      name: name || null
     },
     message: "User creation is not implemented yet."
   });
