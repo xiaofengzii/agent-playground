@@ -67,6 +67,7 @@ model Proposal {
 
   @@index([userId])
   @@index([jobId])
+  @@unique([userId, jobId])
 }
 
 enum ProposalStatus {
