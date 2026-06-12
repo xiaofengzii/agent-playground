@@ -15,24 +15,33 @@ with a modern TypeScript-first architecture.
 
 ## Frontend
 
-The web app includes pages for:
-- Landing
+The web app is built with Next.js 14 App Router. Currently implemented:
+
+- Landing page (`apps/web/src/app/page.tsx`)
+
+Planned features (not yet implemented):
 - Task boards and task detail
 - Create a task
 - User profiles and user search
 - Client and freelancer dashboards
-- Messaging
-- Notifications
-- Settings
-- Billing
+- Messaging, notifications, settings, billing
 - Admin panel
 
 ## Backend
 
-The API includes:
+The API is built with Express.js. Currently implemented routes:
+
+- `GET /health` - Health check endpoint
+- `GET /users` - List users (stub)
+- `POST /users` - Create user (stub)
+- `GET /pi` - Calculate PI value
+- `GET /pi/digits/:count` - Get PI with specific precision
+- `GET /pi/info` - Get PI calculation algorithm info
+
+Planned routes (not yet implemented):
 - Auth routes (register, login, OAuth callback, JWT refresh)
-- CRUD routes for users, tasks, and proposals
-- Payments routes (Stripe-focused service placeholder)
+- CRUD routes for tasks/proposals
+- Payments routes (Stripe)
 - Reviews, messaging, notifications
 - File uploads and search
 - Admin routes
@@ -68,16 +77,13 @@ npm run dev -w apps/api
 
 ## Database
 
-Prisma schema is available in packages/db/prisma/schema.prisma 
-with models for:
-- Users
-- Tasks
-- Proposals
-- Payments
-- Reviews
-- Messages
-- Categories
-- Skills
+Prisma schema is available in packages/db/prisma/schema.prisma with the following models:
+
+- **User** - Registered users in the TaskFlow system
+- **Job** - Tasks/projects posted by clients
+- **Proposal** - Freelancer proposals for jobs
+
+See the schema file for the complete field definitions and relations.
 
 ## Environment Variables
 
