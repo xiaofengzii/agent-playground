@@ -1,6 +1,6 @@
-import { createApp } from "./app";
+import { createApp } from "./app.js";
 import type { Server } from "http";
-import { getPort } from "./config";
+import { getPort } from "./config.js";
 
 const port = getPort(process.env.PORT);
 const app = createApp();
